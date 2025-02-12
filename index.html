@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smartphone Reflexion</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
         body { font-family: Arial, sans-serif; text-align: center; margin: 10px; background-color: #f8f9fa; }
         h2 { color: #007bff; }
@@ -43,22 +41,87 @@
             <textarea placeholder="Folgen"></textarea>
             <textarea placeholder="Lösung"></textarea>
         </div>
+        <div class="question-block">
+            <label>4. Wir verlieren unsere Lesefähigkeit</label>
+            <textarea placeholder="Dein Beispiel"></textarea>
+            <textarea placeholder="Warum tun wir das?"></textarea>
+            <textarea placeholder="Folgen"></textarea>
+            <textarea placeholder="Lösung"></textarea>
+        </div>
+        <div class="question-block">
+            <label>5. Wir ernähren uns von produziertem Content</label>
+            <textarea placeholder="Dein Beispiel"></textarea>
+            <textarea placeholder="Warum tun wir das?"></textarea>
+            <textarea placeholder="Folgen"></textarea>
+            <textarea placeholder="Lösung"></textarea>
+        </div>
+        <div class="question-block">
+            <label>6. Wir werden wie das, was wir „liken“</label>
+            <textarea placeholder="Dein Beispiel"></textarea>
+            <textarea placeholder="Warum tun wir das?"></textarea>
+            <textarea placeholder="Folgen"></textarea>
+            <textarea placeholder="Lösung"></textarea>
+        </div>
+        <div class="question-block">
+            <label>7. Wir werden einsam</label>
+            <textarea placeholder="Dein Beispiel"></textarea>
+            <textarea placeholder="Warum tun wir das?"></textarea>
+            <textarea placeholder="Folgen"></textarea>
+            <textarea placeholder="Lösung"></textarea>
+        </div>
+        <div class="question-block">
+            <label>8. Wir gewöhnen uns an geheime Laster</label>
+            <textarea placeholder="Dein Beispiel"></textarea>
+            <textarea placeholder="Warum tun wir das?"></textarea>
+            <textarea placeholder="Folgen"></textarea>
+            <textarea placeholder="Lösung"></textarea>
+        </div>
+        <div class="question-block">
+            <label>9. Wir verlieren Bedeutung</label>
+            <textarea placeholder="Dein Beispiel"></textarea>
+            <textarea placeholder="Warum tun wir das?"></textarea>
+            <textarea placeholder="Folgen"></textarea>
+            <textarea placeholder="Lösung"></textarea>
+        </div>
+        <div class="question-block">
+            <label>10. Wir fürchten, etwas zu verpassen (FOMO)</label>
+            <textarea placeholder="Dein Beispiel"></textarea>
+            <textarea placeholder="Warum tun wir das?"></textarea>
+            <textarea placeholder="Folgen"></textarea>
+            <textarea placeholder="Lösung"></textarea>
+        </div>
+        <div class="question-block">
+            <label>11. Wir werden hart gegenüber anderen</label>
+            <textarea placeholder="Dein Beispiel"></textarea>
+            <textarea placeholder="Warum tun wir das?"></textarea>
+            <textarea placeholder="Folgen"></textarea>
+            <textarea placeholder="Lösung"></textarea>
+        </div>
+        <div class="question-block">
+            <label>12. Wir verlieren unseren Platz in der Zeit</label>
+            <textarea placeholder="Dein Beispiel"></textarea>
+            <textarea placeholder="Warum tun wir das?"></textarea>
+            <textarea placeholder="Folgen"></textarea>
+            <textarea placeholder="Lösung"></textarea>
+        </div>
     </div>
     
-    <button onclick="downloadAsPDF()">Als PDF speichern</button>
+    <!-- <button onclick="downloadAsPDF()">Als PDF speichern</button> -->
     
     <script>
         function downloadAsPDF() {
-            const {{ jsPDF }} = window.jspdf;
-            let doc = new jsPDF();
             html2canvas(document.getElementById("content")).then(canvas => {
                 let imgData = canvas.toDataURL("image/png");
+                let doc = new jsPDF("p", "mm", "a4");
                 let imgWidth = 210;
                 let imgHeight = (canvas.height * imgWidth) / canvas.width;
-                doc.addImage(imgData, "PNG", 0, 10, imgWidth, imgHeight);
+                doc.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
                 doc.save("smartphone_reflexion.pdf");
             });
         }
     </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </body>
 </html>
