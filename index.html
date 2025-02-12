@@ -19,7 +19,7 @@
     <h2>Reflexion: Wie verändert uns unser Smartphone?</h2>
     <p>Fülle die Felder aus und denke über deine Smartphone-Nutzung nach.</p>
     
-    <div class="container">
+    <div class="container" id="content">
         <div class="question-block">
             <label>1. Wir sind süchtig nach Ablenkung</label>
             <textarea placeholder="Dein Beispiel"></textarea>
@@ -106,19 +106,22 @@
         </div>
     </div>
     
-    <button onclick="downloadAsImage()">Als Bild speichern</button>
+    <button onclick="downloadAsPDF()">Als PDF speichern</button>
     
     <script>
-        function downloadAsImage() {
-            html2canvas(document.body).then(function(canvas) {
-                let link = document.createElement("a");
-                link.download = "smartphone_reflexion.png";
-                link.href = canvas.toDataURL("image/png");
-                link.click();
+        function downloadAsPDF() {
+            html2canvas(document.getElementById("content")).then(canvas => {
+                let imgData = canvas.toDataURL("image/png");
+                let doc = new jsPDF("p", "mm", "a4");
+                let imgWidth = 210;
+                let imgHeight = (canvas.height * imgWidth) / canvas.width;
+                doc.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
+                doc.save("smartphone_reflexion.pdf");
             });
         }
     </script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </body>
 </html>
